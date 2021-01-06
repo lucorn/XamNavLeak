@@ -39,6 +39,9 @@ namespace XamNavLeak.ViewModels
             PageId = pageId;
             CoolChart = chart;
 
+            CoolChart.PaintSurface += PaintCoolChart;
+            CoolChart.CallBack += CoolChart_CallBack;
+
             Title = "Second page";
 
             Debug.WriteLine($"ViewModel for page {PageId} created");
@@ -54,9 +57,22 @@ namespace XamNavLeak.ViewModels
             Debug.WriteLine($"ViewModel for page {PageId} DESTROYED!");
         }
 
+        private void CoolChart_CallBack()
+        {
+            Debug.WriteLine($"CoolChart called back!");
+        }
+
+        public void Cleanup()
+        {
+            CoolChart.CallBack -= CoolChart_CallBack;
+            CoolChart.PaintSurface -= PaintCoolChart;
+        }
+
+
         private void _DoStuff()
         {
             Title = "Did some stuff";
+            CoolChart.InvalidateSurface();
         }
 
         public void PaintCoolChart(object sender, SKPaintSurfaceEventArgs e)

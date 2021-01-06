@@ -25,14 +25,12 @@ namespace XamNavLeak
 
             ViewModel = new SecondVM(PageId, coolChart);
 
-            coolChart.PaintSurface += ViewModel.PaintCoolChart;
-
             BindingContext = ViewModel;
         }
 
         public void Cleanup()
         {
-            coolChart.PaintSurface -= ViewModel.PaintCoolChart;
+            ViewModel.Cleanup();
             ViewModel = null;
         }
 

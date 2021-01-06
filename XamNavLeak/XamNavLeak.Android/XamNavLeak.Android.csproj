@@ -98,6 +98,11 @@
       <Name>XamNavLeak</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidEnvironment Include="environment.txt">
+      <SubType>Designer</SubType>
+    </AndroidEnvironment>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

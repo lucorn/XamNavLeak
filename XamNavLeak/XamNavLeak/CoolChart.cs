@@ -6,8 +6,12 @@ using System.Text;
 
 namespace XamNavLeak
 {
+    public delegate void ChartCallBack();
+
     public class CoolChart: SKCanvasView
     {
+        public event ChartCallBack CallBack;
+
         private static SKPaint _boardBackgroundPaint;
 
         public CoolChart()
@@ -26,6 +30,8 @@ namespace XamNavLeak
             SKRect bkgrnd = new SKRect { Left = 0, Top = 0, Right = info.Width, Bottom = info.Height };
 
             canvas.DrawRect(bkgrnd, _boardBackgroundPaint);
+
+            CallBack?.Invoke();
         }
     }
 }
