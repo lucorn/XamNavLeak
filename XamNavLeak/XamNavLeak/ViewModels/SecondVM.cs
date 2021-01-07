@@ -66,8 +66,9 @@ namespace XamNavLeak.ViewModels
         {
             CoolChart.CallBack -= CoolChart_CallBack;
             CoolChart.PaintSurface -= PaintCoolChart;
-        }
 
+            CoolChart = null;
+        }
 
         private void _DoStuff()
         {

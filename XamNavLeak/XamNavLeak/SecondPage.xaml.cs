@@ -23,6 +23,10 @@ namespace XamNavLeak
 
             Debug.WriteLine($"Page {PageId} created");
 
+            var coolChart = new CoolChart();
+
+            coolchartContainer.Content = coolChart;
+
             ViewModel = new SecondVM(PageId, coolChart);
 
             BindingContext = ViewModel;
@@ -30,13 +34,15 @@ namespace XamNavLeak
 
         public void Cleanup()
         {
+            coolchartContainer.Content = null;
             ViewModel.Cleanup();
             ViewModel = null;
+            Debug.WriteLine($"Page {PageId} CLEANUP");
         }
 
         ~SecondPage()
         {
-            Debug.WriteLine($"Page {PageId} destroyed");
+            Debug.WriteLine($"Page {PageId} DESTROYED");
         }
     }
 }

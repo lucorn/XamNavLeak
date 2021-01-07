@@ -9,6 +9,7 @@
                 Text="Do stuff"
                 BackgroundColor="Orange"
                 Command="{Binding DoStuff}"/>
-        <local:CoolChart Grid.Row="3" x:Name="coolChart"/>
+        <ContentView x:Name="coolchartContainer" Grid.Row="3">
+        </ContentView>
     </Grid>
 </ContentPage>
